@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztc.latte.service.mapper.SysUserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysUserInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sys_user_uid" jdbcType="VARCHAR" property="sysUserUid" />
+    <result column="sys_username" jdbcType="VARCHAR" property="sysUsername" />
+    <result column="sys_pwd" jdbcType="VARCHAR" property="sysPwd" />
+    <result column="sys_name" jdbcType="VARCHAR" property="sysName" />
+    <result column="sys_birth" jdbcType="VARCHAR" property="sysBirth" />
+    <result column="sys_sex" jdbcType="VARCHAR" property="sysSex" />
+    <result column="sys_cert_type" jdbcType="VARCHAR" property="sysCertType" />
+    <result column="sys_cert_val" jdbcType="VARCHAR" property="sysCertVal" />
+    <result column="sys_user_prov" jdbcType="VARCHAR" property="sysUserProv" />
+    <result column="sys_prov_name" jdbcType="VARCHAR" property="sysProvName" />
+    <result column="sys_user_city" jdbcType="VARCHAR" property="sysUserCity" />
+    <result column="sys_city_name" jdbcType="VARCHAR" property="sysCityName" />
+    <result column="sys_user_img" jdbcType="VARCHAR" property="sysUserImg" />
+    <result column="sys_img_count" jdbcType="INTEGER" property="sysImgCount" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="create_emp" jdbcType="VARCHAR" property="createEmp" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="update_emp" jdbcType="VARCHAR" property="updateEmp" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sys_user_uid, sys_username, sys_pwd, sys_name, sys_birth, sys_sex, sys_cert_type, 
+    sys_cert_val, sys_user_prov, sys_prov_name, sys_user_city, sys_city_name, sys_user_img, 
+    sys_img_count, create_time, create_emp, update_time, update_emp, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_user_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ztc.latte.model.SysUserInfo">
+    insert into sys_user_info (id, sys_user_uid, sys_username, 
+      sys_pwd, sys_name, sys_birth, 
+      sys_sex, sys_cert_type, sys_cert_val, 
+      sys_user_prov, sys_prov_name, sys_user_city, 
+      sys_city_name, sys_user_img, sys_img_count, 
+      create_time, create_emp, update_time, 
+      update_emp, is_delete)
+    values (#{id,jdbcType=BIGINT}, #{sysUserUid,jdbcType=VARCHAR}, #{sysUsername,jdbcType=VARCHAR}, 
+      #{sysPwd,jdbcType=VARCHAR}, #{sysName,jdbcType=VARCHAR}, #{sysBirth,jdbcType=VARCHAR}, 
+      #{sysSex,jdbcType=VARCHAR}, #{sysCertType,jdbcType=VARCHAR}, #{sysCertVal,jdbcType=VARCHAR}, 
+      #{sysUserProv,jdbcType=VARCHAR}, #{sysProvName,jdbcType=VARCHAR}, #{sysUserCity,jdbcType=VARCHAR}, 
+      #{sysCityName,jdbcType=VARCHAR}, #{sysUserImg,jdbcType=VARCHAR}, #{sysImgCount,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=VARCHAR}, #{createEmp,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{updateEmp,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztc.latte.model.SysUserInfo">
+    insert into sys_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sysUserUid != null">
+        sys_user_uid,
+      </if>
+      <if test="sysUsername != null">
+        sys_username,
+      </if>
+      <if test="sysPwd != null">
+        sys_pwd,
+      </if>
+      <if test="sysName != null">
+        sys_name,
+      </if>
+      <if test="sysBirth != null">
+        sys_birth,
+      </if>
+      <if test="sysSex != null">
+        sys_sex,
+      </if>
+      <if test="sysCertType != null">
+        sys_cert_type,
+      </if>
+      <if test="sysCertVal != null">
+        sys_cert_val,
+      </if>
+      <if test="sysUserProv != null">
+        sys_user_prov,
+      </if>
+      <if test="sysProvName != null">
+        sys_prov_name,
+      </if>
+      <if test="sysUserCity != null">
+        sys_user_city,
+      </if>
+      <if test="sysCityName != null">
+        sys_city_name,
+      </if>
+      <if test="sysUserImg != null">
+        sys_user_img,
+      </if>
+      <if test="sysImgCount != null">
+        sys_img_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createEmp != null">
+        create_emp,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateEmp != null">
+        update_emp,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sysUserUid != null">
+        #{sysUserUid,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUsername != null">
+        #{sysUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sysPwd != null">
+        #{sysPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sysName != null">
+        #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysBirth != null">
+        #{sysBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="sysSex != null">
+        #{sysSex,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCertType != null">
+        #{sysCertType,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCertVal != null">
+        #{sysCertVal,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserProv != null">
+        #{sysUserProv,jdbcType=VARCHAR},
+      </if>
+      <if test="sysProvName != null">
+        #{sysProvName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserCity != null">
+        #{sysUserCity,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCityName != null">
+        #{sysCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserImg != null">
+        #{sysUserImg,jdbcType=VARCHAR},
+      </if>
+      <if test="sysImgCount != null">
+        #{sysImgCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createEmp != null">
+        #{createEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateEmp != null">
+        #{updateEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztc.latte.model.SysUserInfo">
+    update sys_user_info
+    <set>
+      <if test="sysUserUid != null">
+        sys_user_uid = #{sysUserUid,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUsername != null">
+        sys_username = #{sysUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sysPwd != null">
+        sys_pwd = #{sysPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sysName != null">
+        sys_name = #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysBirth != null">
+        sys_birth = #{sysBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="sysSex != null">
+        sys_sex = #{sysSex,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCertType != null">
+        sys_cert_type = #{sysCertType,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCertVal != null">
+        sys_cert_val = #{sysCertVal,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserProv != null">
+        sys_user_prov = #{sysUserProv,jdbcType=VARCHAR},
+      </if>
+      <if test="sysProvName != null">
+        sys_prov_name = #{sysProvName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserCity != null">
+        sys_user_city = #{sysUserCity,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCityName != null">
+        sys_city_name = #{sysCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUserImg != null">
+        sys_user_img = #{sysUserImg,jdbcType=VARCHAR},
+      </if>
+      <if test="sysImgCount != null">
+        sys_img_count = #{sysImgCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createEmp != null">
+        create_emp = #{createEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateEmp != null">
+        update_emp = #{updateEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztc.latte.model.SysUserInfo">
+    update sys_user_info
+    set sys_user_uid = #{sysUserUid,jdbcType=VARCHAR},
+      sys_username = #{sysUsername,jdbcType=VARCHAR},
+      sys_pwd = #{sysPwd,jdbcType=VARCHAR},
+      sys_name = #{sysName,jdbcType=VARCHAR},
+      sys_birth = #{sysBirth,jdbcType=VARCHAR},
+      sys_sex = #{sysSex,jdbcType=VARCHAR},
+      sys_cert_type = #{sysCertType,jdbcType=VARCHAR},
+      sys_cert_val = #{sysCertVal,jdbcType=VARCHAR},
+      sys_user_prov = #{sysUserProv,jdbcType=VARCHAR},
+      sys_prov_name = #{sysProvName,jdbcType=VARCHAR},
+      sys_user_city = #{sysUserCity,jdbcType=VARCHAR},
+      sys_city_name = #{sysCityName,jdbcType=VARCHAR},
+      sys_user_img = #{sysUserImg,jdbcType=VARCHAR},
+      sys_img_count = #{sysImgCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_emp = #{createEmp,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      update_emp = #{updateEmp,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

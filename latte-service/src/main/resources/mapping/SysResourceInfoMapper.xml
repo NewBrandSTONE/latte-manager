@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztc.latte.service.mapper.SysResourceInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysResourceInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sys_resource_uid" jdbcType="VARCHAR" property="sysResourceUid" />
+    <result column="sys_resource_name" jdbcType="VARCHAR" property="sysResourceName" />
+    <result column="sys_resource_level" jdbcType="INTEGER" property="sysResourceLevel" />
+    <result column="sys_resource_path" jdbcType="VARCHAR" property="sysResourcePath" />
+    <result column="sys_parent_uid" jdbcType="VARCHAR" property="sysParentUid" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="create_emp" jdbcType="VARCHAR" property="createEmp" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="update_emp" jdbcType="VARCHAR" property="updateEmp" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sys_resource_uid, sys_resource_name, sys_resource_level, sys_resource_path, sys_parent_uid, 
+    create_time, create_emp, update_time, update_emp, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_resource_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_resource_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ztc.latte.model.SysResourceInfo">
+    insert into sys_resource_info (id, sys_resource_uid, sys_resource_name, 
+      sys_resource_level, sys_resource_path, sys_parent_uid, 
+      create_time, create_emp, update_time, 
+      update_emp, is_delete)
+    values (#{id,jdbcType=BIGINT}, #{sysResourceUid,jdbcType=VARCHAR}, #{sysResourceName,jdbcType=VARCHAR}, 
+      #{sysResourceLevel,jdbcType=INTEGER}, #{sysResourcePath,jdbcType=VARCHAR}, #{sysParentUid,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{createEmp,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{updateEmp,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztc.latte.model.SysResourceInfo">
+    insert into sys_resource_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sysResourceUid != null">
+        sys_resource_uid,
+      </if>
+      <if test="sysResourceName != null">
+        sys_resource_name,
+      </if>
+      <if test="sysResourceLevel != null">
+        sys_resource_level,
+      </if>
+      <if test="sysResourcePath != null">
+        sys_resource_path,
+      </if>
+      <if test="sysParentUid != null">
+        sys_parent_uid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createEmp != null">
+        create_emp,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateEmp != null">
+        update_emp,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sysResourceUid != null">
+        #{sysResourceUid,jdbcType=VARCHAR},
+      </if>
+      <if test="sysResourceName != null">
+        #{sysResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysResourceLevel != null">
+        #{sysResourceLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sysResourcePath != null">
+        #{sysResourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParentUid != null">
+        #{sysParentUid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createEmp != null">
+        #{createEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateEmp != null">
+        #{updateEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztc.latte.model.SysResourceInfo">
+    update sys_resource_info
+    <set>
+      <if test="sysResourceUid != null">
+        sys_resource_uid = #{sysResourceUid,jdbcType=VARCHAR},
+      </if>
+      <if test="sysResourceName != null">
+        sys_resource_name = #{sysResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysResourceLevel != null">
+        sys_resource_level = #{sysResourceLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sysResourcePath != null">
+        sys_resource_path = #{sysResourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParentUid != null">
+        sys_parent_uid = #{sysParentUid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createEmp != null">
+        create_emp = #{createEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateEmp != null">
+        update_emp = #{updateEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztc.latte.model.SysResourceInfo">
+    update sys_resource_info
+    set sys_resource_uid = #{sysResourceUid,jdbcType=VARCHAR},
+      sys_resource_name = #{sysResourceName,jdbcType=VARCHAR},
+      sys_resource_level = #{sysResourceLevel,jdbcType=INTEGER},
+      sys_resource_path = #{sysResourcePath,jdbcType=VARCHAR},
+      sys_parent_uid = #{sysParentUid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_emp = #{createEmp,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      update_emp = #{updateEmp,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
