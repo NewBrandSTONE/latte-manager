@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 @Service
 public class SysResourceInfoServiceImpl implements SysResourceInfoService {
 
