@@ -161,4 +161,21 @@
       is_delete = #{isDelete,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findByUserUuid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+        r.*
+    FROM
+        sys_resource_info r ,
+        sys_user_role ur ,
+        sys_role_resource rr,
+        sys_user_info u
+    WHERE
+        r.is_delete = 0
+    AND ur.sys_user_uid = u.sys_user_uid
+    AND u.is_delete = 0
+    AND rr.sys_resource_uid = r.sys_resource_uid
+    AND u.sys_user_uid = #{userUuid}
+  </select>
+
 </mapper>

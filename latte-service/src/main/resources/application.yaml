@@ -17,13 +17,13 @@ spring:
       name: dubbo
       port: 21882
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/db_server?characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/latte_manager?characterEncoding=utf8&useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
   mybatis:
     mapper-locations: classpath:mapping/*.xml
-    type-aliases-package: com.ztc.lottery.server.model
+    type-aliases-package: com.ztc.latte.server.model
 
 logging:
   level:
