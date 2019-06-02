@@ -1,8 +1,10 @@
 package com.ztc.latte.service.mapper;
 
 import com.ztc.latte.model.SysUserInfo;
+import org.apache.ibatis.annotations.Param;
 
 public interface SysUserInfoMapper {
+
     int deleteByPrimaryKey(Long id);
 
     int insert(SysUserInfo record);
@@ -14,4 +16,6 @@ public interface SysUserInfoMapper {
     int updateByPrimaryKeySelective(SysUserInfo record);
 
     int updateByPrimaryKey(SysUserInfo record);
+
+    SysUserInfo findByUserName(@Param("userName") String userName);
 }

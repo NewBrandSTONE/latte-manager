@@ -65,7 +65,7 @@ public class MyBatisConfig {
 
         //mapper的xml路径和别名包
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(env.getProperty("spring.mybatis.mapper-locations")));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(env.getProperty("mybatis.mapper-locations")));
         sqlSessionFactoryBean.setTypeAliasesPackage(env.getProperty("spring.mybatis.type-aliases-package"));
         sqlSessionFactoryBean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
 

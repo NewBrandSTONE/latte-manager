@@ -267,4 +267,16 @@
       is_delete = #{isDelete,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findByUserName" resultMap="BaseResultMap">
+    select
+      *
+    from
+      sys_user_info
+    where
+      is_delete = 0
+    and
+      sys_username = #{userName}
+    limit 1
+  </select>
 </mapper>

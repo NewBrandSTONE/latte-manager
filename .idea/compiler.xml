@@ -12,4 +12,10 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="latte-service" options="" />
+      <module name="latte-web" options="" />
+    </option>
+  </component>
 </project>

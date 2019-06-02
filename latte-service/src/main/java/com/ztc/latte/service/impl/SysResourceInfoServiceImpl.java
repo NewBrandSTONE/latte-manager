@@ -8,7 +8,6 @@ import com.ztc.latte.model.SysResourceInfo;
 import com.ztc.latte.service.mapper.SysResourceInfoMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

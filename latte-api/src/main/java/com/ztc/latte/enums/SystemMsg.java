@@ -10,7 +10,8 @@ public enum SystemMsg implements IErrorMsg {
     SUCCESS("0", "SUCCESS"),
     ERROR("9999", "ERROR"),
 
-    SYS_USER_UUID_IS_EMPTY("10000", "系统用户UUID不能为空");
+    SYS_USER_NAME_IS_EMPTY("10000", "系统用户名称不能为空"),
+    SYS_USER_UUID_IS_EMPTY("10001", "系统用户UUID不能为空");
 
     private String code;
     private String msg;
