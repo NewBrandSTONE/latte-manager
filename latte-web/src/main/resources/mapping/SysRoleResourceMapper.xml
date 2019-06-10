@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ztc.latte.service.mapper.SysUserRoleMapper">
-  <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysUserRole">
+<mapper namespace="com.ztc.latte.web.mapper.SysRoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysRoleResource">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="sys_user_uid" jdbcType="VARCHAR" property="sysUserUid" />
     <result column="sys_role_uid" jdbcType="VARCHAR" property="sysRoleUid" />
+    <result column="sys_resource_uid" jdbcType="VARCHAR" property="sysResourceUid" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="create_emp" jdbcType="VARCHAR" property="createEmp" />
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
     <result column="update_emp" jdbcType="VARCHAR" property="updateEmp" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, sys_user_uid, sys_role_uid, create_time, create_emp, update_time, update_emp
+    id, sys_role_uid, sys_resource_uid, create_time, create_emp, update_time, update_emp
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_user_role
+    from sys_role_resource
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_user_role
+    delete from sys_role_resource
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.ztc.latte.model.SysUserRole">
-    insert into sys_user_role (id, sys_user_uid, sys_role_uid, 
+  <insert id="insert" parameterType="com.ztc.latte.model.SysRoleResource">
+    insert into sys_role_resource (id, sys_role_uid, sys_resource_uid, 
       create_time, create_emp, update_time, 
       update_emp)
-    values (#{id,jdbcType=BIGINT}, #{sysUserUid,jdbcType=VARCHAR}, #{sysRoleUid,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{sysRoleUid,jdbcType=VARCHAR}, #{sysResourceUid,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=VARCHAR}, #{createEmp,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
       #{updateEmp,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ztc.latte.model.SysUserRole">
-    insert into sys_user_role
+  <insert id="insertSelective" parameterType="com.ztc.latte.model.SysRoleResource">
+    insert into sys_role_resource
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="sysUserUid != null">
-        sys_user_uid,
-      </if>
       <if test="sysRoleUid != null">
         sys_role_uid,
+      </if>
+      <if test="sysResourceUid != null">
+        sys_resource_uid,
       </if>
       <if test="createTime != null">
         create_time,
@@ -60,11 +60,11 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="sysUserUid != null">
-        #{sysUserUid,jdbcType=VARCHAR},
-      </if>
       <if test="sysRoleUid != null">
         #{sysRoleUid,jdbcType=VARCHAR},
+      </if>
+      <if test="sysResourceUid != null">
+        #{sysResourceUid,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=VARCHAR},
@@ -80,14 +80,14 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ztc.latte.model.SysUserRole">
-    update sys_user_role
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztc.latte.model.SysRoleResource">
+    update sys_role_resource
     <set>
-      <if test="sysUserUid != null">
-        sys_user_uid = #{sysUserUid,jdbcType=VARCHAR},
-      </if>
       <if test="sysRoleUid != null">
         sys_role_uid = #{sysRoleUid,jdbcType=VARCHAR},
+      </if>
+      <if test="sysResourceUid != null">
+        sys_resource_uid = #{sysResourceUid,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=VARCHAR},
@@ -104,10 +104,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ztc.latte.model.SysUserRole">
-    update sys_user_role
-    set sys_user_uid = #{sysUserUid,jdbcType=VARCHAR},
-      sys_role_uid = #{sysRoleUid,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.ztc.latte.model.SysRoleResource">
+    update sys_role_resource
+    set sys_role_uid = #{sysRoleUid,jdbcType=VARCHAR},
+      sys_resource_uid = #{sysResourceUid,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR},
       create_emp = #{createEmp,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=VARCHAR},

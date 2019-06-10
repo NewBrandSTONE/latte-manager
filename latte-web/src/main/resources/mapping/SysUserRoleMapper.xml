@@ -1,55 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ztc.latte.service.mapper.SysRoleInfoMapper">
-  <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysRoleInfo">
+<mapper namespace="com.ztc.latte.web.mapper.SysUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysUserRole">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sys_user_uid" jdbcType="VARCHAR" property="sysUserUid" />
     <result column="sys_role_uid" jdbcType="VARCHAR" property="sysRoleUid" />
-    <result column="sys_role_name" jdbcType="VARCHAR" property="sysRoleName" />
-    <result column="sys_role_desc" jdbcType="VARCHAR" property="sysRoleDesc" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="create_emp" jdbcType="VARCHAR" property="createEmp" />
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
     <result column="update_emp" jdbcType="VARCHAR" property="updateEmp" />
-    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, sys_role_uid, sys_role_name, sys_role_desc, create_time, create_emp, update_time, 
-    update_emp, is_delete
+    id, sys_user_uid, sys_role_uid, create_time, create_emp, update_time, update_emp
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_role_info
+    from sys_user_role
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_role_info
+    delete from sys_user_role
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.ztc.latte.model.SysRoleInfo">
-    insert into sys_role_info (id, sys_role_uid, sys_role_name, 
-      sys_role_desc, create_time, create_emp, 
-      update_time, update_emp, is_delete
-      )
-    values (#{id,jdbcType=BIGINT}, #{sysRoleUid,jdbcType=VARCHAR}, #{sysRoleName,jdbcType=VARCHAR}, 
-      #{sysRoleDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{createEmp,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=VARCHAR}, #{updateEmp,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}
-      )
+  <insert id="insert" parameterType="com.ztc.latte.model.SysUserRole">
+    insert into sys_user_role (id, sys_user_uid, sys_role_uid, 
+      create_time, create_emp, update_time, 
+      update_emp)
+    values (#{id,jdbcType=BIGINT}, #{sysUserUid,jdbcType=VARCHAR}, #{sysRoleUid,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{createEmp,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{updateEmp,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ztc.latte.model.SysRoleInfo">
-    insert into sys_role_info
+  <insert id="insertSelective" parameterType="com.ztc.latte.model.SysUserRole">
+    insert into sys_user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
+      <if test="sysUserUid != null">
+        sys_user_uid,
+      </if>
       <if test="sysRoleUid != null">
         sys_role_uid,
-      </if>
-      <if test="sysRoleName != null">
-        sys_role_name,
-      </if>
-      <if test="sysRoleDesc != null">
-        sys_role_desc,
       </if>
       <if test="createTime != null">
         create_time,
@@ -63,22 +55,16 @@
       <if test="updateEmp != null">
         update_emp,
       </if>
-      <if test="isDelete != null">
-        is_delete,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
+      <if test="sysUserUid != null">
+        #{sysUserUid,jdbcType=VARCHAR},
+      </if>
       <if test="sysRoleUid != null">
         #{sysRoleUid,jdbcType=VARCHAR},
-      </if>
-      <if test="sysRoleName != null">
-        #{sysRoleName,jdbcType=VARCHAR},
-      </if>
-      <if test="sysRoleDesc != null">
-        #{sysRoleDesc,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=VARCHAR},
@@ -92,22 +78,16 @@
       <if test="updateEmp != null">
         #{updateEmp,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null">
-        #{isDelete,jdbcType=TINYINT},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ztc.latte.model.SysRoleInfo">
-    update sys_role_info
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztc.latte.model.SysUserRole">
+    update sys_user_role
     <set>
+      <if test="sysUserUid != null">
+        sys_user_uid = #{sysUserUid,jdbcType=VARCHAR},
+      </if>
       <if test="sysRoleUid != null">
         sys_role_uid = #{sysRoleUid,jdbcType=VARCHAR},
-      </if>
-      <if test="sysRoleName != null">
-        sys_role_name = #{sysRoleName,jdbcType=VARCHAR},
-      </if>
-      <if test="sysRoleDesc != null">
-        sys_role_desc = #{sysRoleDesc,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=VARCHAR},
@@ -121,22 +101,17 @@
       <if test="updateEmp != null">
         update_emp = #{updateEmp,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=TINYINT},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ztc.latte.model.SysRoleInfo">
-    update sys_role_info
-    set sys_role_uid = #{sysRoleUid,jdbcType=VARCHAR},
-      sys_role_name = #{sysRoleName,jdbcType=VARCHAR},
-      sys_role_desc = #{sysRoleDesc,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.ztc.latte.model.SysUserRole">
+    update sys_user_role
+    set sys_user_uid = #{sysUserUid,jdbcType=VARCHAR},
+      sys_role_uid = #{sysRoleUid,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR},
       create_emp = #{createEmp,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=VARCHAR},
-      update_emp = #{updateEmp,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=TINYINT}
+      update_emp = #{updateEmp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

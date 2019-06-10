@@ -1,4 +1,4 @@
-package com.ztc.latte.service.config;
+package com.ztc.latte.web.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;

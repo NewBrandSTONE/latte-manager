@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ztc.latte.service.mapper.SysUserInfoMapper">
+<mapper namespace="com.ztc.latte.web.mapper.SysUserInfoMapper">
   <resultMap id="BaseResultMap" type="com.ztc.latte.model.SysUserInfo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="sys_user_uid" jdbcType="VARCHAR" property="sysUserUid" />

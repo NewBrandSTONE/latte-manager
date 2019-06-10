@@ -1,7 +1,8 @@
-package com.ztc.latte.service.config;
+package com.ztc.latte.web.config;
 
-import com.ztc.latte.service.realms.LatteRealm;
+import com.ztc.latte.web.realms.LatteRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -9,7 +10,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.apache.shiro.mgt.SecurityManager;
 import org.springframework.context.annotation.DependsOn;
 
 import java.util.LinkedHashMap;
@@ -46,7 +46,7 @@ public class ShiroConfig {
 
     /**
      * 安全管理器
-     * 注：使用shiro-spring-boot-starter 1.4时，返回类型是SecurityManager会报错，直接引用shiro-spring则不报错
+     * 注：使用shiro-spring-bo ot-starter 1.4时，返回类型是SecurityManager会报错，直接引用shiro-spring则不报错
      *
      * @return
      */
@@ -56,7 +56,6 @@ public class ShiroConfig {
         securityManager.setRealm(userRealm());
         return securityManager;
     }
-
 
     /**
      * 设置过滤规则
@@ -68,7 +67,7 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setLoginUrl("/login/toLogin");
         shiroFilterFactoryBean.setSuccessUrl("/");
         shiroFilterFactoryBean.setUnauthorizedUrl("/unauth");
 
@@ -76,7 +75,7 @@ public class ShiroConfig {
         //所以上面的url要苛刻，宽松的url要放在下面，尤其是"/**"要放到最下面，如果放前面的话其后的验证规则就没作用了。
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/login/doLogin", "anon");
         filterChainDefinitionMap.put("/captcha.jpg", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
         filterChainDefinitionMap.put("/sysUser/**", "authc");

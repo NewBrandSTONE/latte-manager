@@ -1,4 +1,4 @@
-package com.ztc.latte.service.mapper;
+package com.ztc.latte.web.mapper;
 
 import com.ztc.latte.model.SysUserRole;
 

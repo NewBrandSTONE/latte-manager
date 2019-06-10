@@ -1,8 +1,8 @@
-package com.ztc.latte.service.realms;
+package com.ztc.latte.web.realms;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.ztc.latte.api.SysResourceInfoService;
-import com.ztc.latte.api.SysUserInfoService;
+import com.ztc.latte.web.service.SysResourceInfoService;
+import com.ztc.latte.web.service.SysUserInfoService;
 import com.ztc.latte.model.SysResourceInfo;
 import com.ztc.latte.model.SysUserInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;

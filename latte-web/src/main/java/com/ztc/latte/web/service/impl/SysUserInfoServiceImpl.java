@@ -1,13 +1,13 @@
-package com.ztc.latte.service.impl;
+package com.ztc.latte.web.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.ztc.latte.api.SysUserInfoService;
 import com.ztc.latte.enums.SystemMsg;
 import com.ztc.latte.exception.BusinessExceptions;
 import com.ztc.latte.model.SysUserInfo;
-import com.ztc.latte.service.mapper.SysUserInfoMapper;
+import com.ztc.latte.web.mapper.SysUserInfoMapper;
+import com.ztc.latte.web.service.SysUserInfoService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SysUserInfoServiceImpl implements SysUserInfoService {
